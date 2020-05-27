@@ -119,3 +119,20 @@ jhipster:
 # ===================================================================
 
 # application:
+
+---
+spring.profiles: postgresql
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://${DATABASE_ENDPOINT:localhost}:5432/jhipsterSampleApplication
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:pwdPostgres}
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    show-sql: true
+    database: POSTGRESQL

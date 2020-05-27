@@ -35,20 +35,6 @@ spring:
   jackson:
     serialization:
       indent-output: true
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:jhipstersampleapplication;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: jhipsterSampleApplication
-    password:
-    hikari:
-      poolName: Hikari
-      auto-commit: false
-  h2:
-    console:
-      enabled: false
-  jpa:
-    database-platform: io.github.jhipster.domain.util.FixedH2Dialect
-    show-sql: true
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
@@ -110,3 +96,40 @@ jhipster:
 # ===================================================================
 
 # application:
+
+
+---
+spring.profiles: postgresql
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://${DATABASE_ENDPOINT:localhost}:5432/jhipsterSampleApplication
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:pwdPostgres}
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    show-sql: true
+    database: POSTGRESQL
+
+---
+spring.profiles: h2
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:jhipstersampleapplication;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: jhipsterSampleApplication
+    password:
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+  h2:
+    console:
+      enabled: false
+  jpa:
+    database-platform: io.github.jhipster.domain.util.FixedH2Dialect
+    show-sql: true
