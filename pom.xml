@@ -922,7 +922,7 @@
             </dependencies>
         </profile>
         <profile>
-            <id>beanstalk</id>
+            <id>aws</id>
             <build>
                 <plugins>
                     <plugin>
@@ -947,7 +947,7 @@
                         <configuration>
                             <webResources>
                                 <resource>
-                                    <directory>.ebextensions</directory>
+                                    <directory>aws/.ebextensions</directory>
                                     <targetPath>.ebextensions</targetPath>
                                     <includes>
                                         <include>*.config</include>
